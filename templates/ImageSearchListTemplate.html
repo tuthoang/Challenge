@@ -1,0 +1,15 @@
+<form action="/pixabay/list/" method="GET">
+    <label for="q">Query: </label>
+    <input id="q" type="text" name="q" value="{{ request.GET.q}}">
+    <input type="submit" value="Search">
+</form>
+
+{% for image in images %}
+<image src={{ image.previewURL }} height="100" width="150"></image>
+{% endfor %}
+
+<div>
+    {% for pagenum in visible_pages %}
+    <a href="{% url 'search-list-url'%}?page={{pagenum}}&q={{request.GET.q}}"> {{pagenum}} </a>
+    {%endfor%}
+</div>
