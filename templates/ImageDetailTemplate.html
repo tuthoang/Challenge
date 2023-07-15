@@ -1,30 +1,37 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles.css' %}">
 <div>
     <a href="{{request.META.HTTP_REFERER|escape}}" class="back-button">Back</a>
-    <image src={{ image.webformatURL }} height="360" width="440"></image>
-    <table>
-        <tr>
-            <th>User:</th>
-            <td>{{image.user}}</td>
-        </tr>
-        <tr>
-            <th>Tags:</th>
-            <td>{{image.tags}}</td>
-        </tr>
-        <tr>
-            <th>Views:</th>
-            <td>{{image.views}}</td>
-        </tr>
-        <tr>
-            <th>Downloads:</th>
-            <td>{{image.downloads}}</td>
-        </tr>
-        <tr>
-            <th>Likes:</th>
-            <td>{{image.likes}}</td>
-        </tr>
-        <tr>
-            <th>Comments:</th>
-            <td>{{image.comments}}</td>
-        </tr>
-    </table>
+    <div class="detail-container">
+        <image src={{ image.webformatURL }} height="360" width="440"></image>
+        <div> 
+            <table>
+                <tr>
+                    <th>User:</th>
+                    <td>{{image.user}}</td>
+                </tr>
+                <tr>
+                    <th>Tags:</th>
+                    <td>{{image.tags}}</td>
+                </tr>
+                <tr>
+                    <th>Views:</th>
+                    <td>{{image.views}}</td>
+                </tr>
+                <tr>
+                    <th>Downloads:</th>
+                    <td>{{image.downloads}}</td>
+                </tr>
+                <tr>
+                    <th>Likes:</th>
+                    <td>{{image.likes}}</td>
+                </tr>
+                <tr>
+                    <th>Comments:</th>
+                    <td>{{image.comments}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

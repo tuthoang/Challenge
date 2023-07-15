@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer
@@ -21,9 +22,9 @@ class ImageSearchListView(generics.GenericAPIView):
         min_visible_page = max(1, page-5)
         max_visible_page = page+5
         visible_pages = list(range(min_visible_page, max_visible_page))
-
+        print(images)
         if not images:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            raise Http404
 
         image_serializers = [ImageDetailSerializer(data=image) for image in images]
         validated_image_details = [serializer.validated_data for serializer in image_serializers if serializer.is_valid()]

@@ -1,0 +1,47 @@
+
+.search-bar {
+    /* margin: auto; */
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: space-evenly;
+    row-gap: 20px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    padding: 5px;
+}
+
+.pagination a.active-page {
+    background-color: grey;
+    color: white;
+}
+
+a:hover {
+    background-color: lightgrey;
+}
+
+.back-button {
+    background-color: grey;
+    color: white;
+    padding: 5px;
+}
+
+.detail-container {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    border: 1px solid red;
+    padding: 20px;
+}
+

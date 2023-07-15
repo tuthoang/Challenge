@@ -1,15 +1,31 @@
-<form action="/pixabay/list/" method="GET">
-    <label for="q">Query: </label>
-    <input id="q" type="text" name="q" value="{{ request.GET.q}}">
-    <input type="submit" value="Search">
-</form>
+{% load static %}
 
-{% for image in images %}
-    <a href="{% url 'image-detail-url' pk=image.id%}"><image src={{ image.previewURL }} height="100" width="150"></image> </a>
-{% endfor %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
 
-<div>
-    {% for pagenum in visible_pages %}
-    <a href="{% url 'search-list-url'%}?page={{pagenum}}&q={{request.GET.q}}"> {{pagenum}} </a>
-    {%endfor%}
+<div class="container">
+    <div class="search-bar">
+        <form action="/pixabay/list/" method="GET">
+            <label for="q">Query: </label>
+            <input id="q" type="text" name="q" value="{{ request.GET.q}}">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <div class="grid-container">
+        {% for image in images %}
+            <div className="grid-item">
+                <a href="{% url 'image-detail-url' pk=image.id%}"><image src={{ image.previewURL }} height="100" width="150"></image> </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% for pagenum in visible_pages %}
+            {% if pagenum == page %}
+                <a href="{% url 'search-list-url'%}?page={{page}}&q={{request.GET.q}}" class='active-page'> {{page}} </a>
+            
+            {% else %}
+                <a href="{% url 'search-list-url'%}?page={{pagenum}}&q={{request.GET.q}}" class='not-active-page'> {{pagenum}} </a>
+            {%endif%}
+        {% endfor %}
+    </div>
 </div>
