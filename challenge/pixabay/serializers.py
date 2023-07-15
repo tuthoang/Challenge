@@ -1,5 +1,6 @@
 from rest_framework import serializers
 import urllib.parse
+from .models import ImageDetail
 
 class ImageSearchListSerializer(serializers.Serializer):
     q = serializers.CharField(max_length=100, required=False)
@@ -11,3 +12,8 @@ class ImageSearchListSerializer(serializers.Serializer):
             # q needs to be URL encoded
             validated_data['q'] = urllib.parse.quote_plus(validated_data['q'])
         return super().validate(validated_data)
+
+class ImageDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageDetail
+        fields = '__all__'
