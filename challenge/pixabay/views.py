@@ -22,7 +22,6 @@ class ImageSearchListView(generics.GenericAPIView):
         min_visible_page = max(1, page-5)
         max_visible_page = page+5
         visible_pages = list(range(min_visible_page, max_visible_page))
-        print(images)
         if not images:
             raise Http404
 
