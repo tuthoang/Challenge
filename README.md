@@ -7,3 +7,4 @@
 4. Create .env file in root of repository. Add "ENV='{pixabay key here}'" to the file
 5. ./manage.py migrate
 6. ./manage.py runserver
+7. go to http://127.0.0.1:8000/pixabay/list/
